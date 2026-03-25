@@ -171,7 +171,7 @@ static int proc_config_open(struct inode *inode, struct file *file)
 }
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0)
-const static struct file_operations proc_config_ops = {
+static const struct file_operations proc_config_ops = {
     .owner      = THIS_MODULE,
     .open       = proc_config_open,
     .read       = seq_read,
@@ -180,7 +180,7 @@ const static struct file_operations proc_config_ops = {
     .release    = single_release
 };
 #else
-const static struct proc_ops proc_config_ops = {
+static const struct proc_ops proc_config_ops = {
     .proc_open       = proc_config_open,
     .proc_read       = seq_read,
     .proc_write      = proc_config_write,
